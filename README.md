@@ -2,7 +2,7 @@
 
 A modern, production-grade Pokédex web application built with React and Vite. Designed with: frosted glass surfaces, fluid animations, and a refined typographic system.
 
-Live demo → Coming soon!
+Live demo → (https://medex-pokedex.vercel.app/)!
 
 ---
 
