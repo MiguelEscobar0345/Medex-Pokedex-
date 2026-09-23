@@ -10,3 +10,9 @@
 .dex-anchor { scroll-margin-top: -16px; }
 
 .results { padding-top: 20px; }
+
+/* Room for the bottom tab bar on phones */
+@media (max-width: 760px) {
+  :root { --bottom-bar: calc(65px + env(safe-area-inset-bottom)); }
+  .app { padding-bottom: var(--bottom-bar); }
+}
