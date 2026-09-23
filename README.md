@@ -20,6 +20,8 @@ Live → **[medex-pokedex.vercel.app](https://medex-pokedex.vercel.app/)**
   attacking type, offensive gaps, the biggest threats and average stats
 - **Compare** two Pokémon head to head: overlaid radar, stat duel, type advantage verdict and
   suggested rivals (`/compare/charizard-vs-blastoise`)
+- **Who’s that Pokémon?** — guess from the silhouette with multiple choice or by typing the name
+  (one typo forgiven), filter by generation, and chase your best streak
 - **Shareable URLs** — every Pokémon has its own page, e.g. `/pokemon/pikachu`
 - **Light and dark themes** that follow the system, with a manual toggle
 - **Accessible** — keyboard shortcuts (`/` or `Ctrl+K` to search, `Esc` to close),

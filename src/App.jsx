@@ -11,6 +11,7 @@ import PokemonGrid from './components/PokemonGrid'
 import PokemonDetail from './components/detail/PokemonDetail'
 import TeamPage from './components/team/TeamPage'
 import ComparePage from './components/compare/ComparePage'
+import GamePage from './components/game/GamePage'
 import TeamDock from './components/TeamDock'
 import Toast from './components/Toast'
 import Footer from './components/Footer'
@@ -87,6 +88,7 @@ export default function App() {
             )}
             {section === 'team' && <TeamPage />}
             {section === 'compare' && <ComparePage a={route.params.a} b={route.params.b} />}
+            {section === 'game' && <GamePage />}
           </motion.main>
         </AnimatePresence>
 

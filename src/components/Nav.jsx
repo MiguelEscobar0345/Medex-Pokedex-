@@ -14,6 +14,7 @@ const SECTIONS = [
   { id: 'home', to: '/', label: 'Pokédex', icon: 'dex' },
   { id: 'team', to: '/team', label: 'Team', icon: 'team' },
   { id: 'compare', to: '/compare', label: 'Compare', icon: 'compare' },
+  { id: 'game', to: '/game', label: 'Game', icon: 'game' },
 ]
 
 export default function Nav({ section, variant = 'top' }) {
