@@ -1,4 +1,4 @@
-# MeDex
+# MeDex by miguesco
 
 A field guide to all 1,025 Pokémon, built with React, Vite and [Motion](https://motion.dev).
 
@@ -81,4 +81,4 @@ src/
 Data and artwork from [PokéAPI](https://pokeapi.co). Pokémon and Pokémon names are
 trademarks of Nintendo, Game Freak and The Pokémon Company.
 
-MIT © [Miguel E. Escobar P.](https://github.com/MiguelEscobar0345)
+MIT © [Miguel Escobar — miguesco](https://miguesco.dev)

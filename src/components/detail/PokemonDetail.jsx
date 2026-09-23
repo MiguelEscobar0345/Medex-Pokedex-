@@ -95,7 +95,7 @@ export default function PokemonDetail({ pokemon, list, shared, onNavigate, onClo
 
   useEffect(() => {
     const previous = document.title
-    document.title = `${name} · MeDex`
+    document.title = `${name} · MeDex by miguesco`
     return () => { document.title = previous }
   }, [name])
 
