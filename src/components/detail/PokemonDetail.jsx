@@ -4,6 +4,9 @@ import { GENERATIONS, POKEDEX, dexNumber } from '../../data/pokedex'
 import { typeColor } from '../../data/types'
 import { usePokemonDetail } from '../../hooks/usePokemonDetail'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { useLockBodyScroll } from '../../hooks/useLockBodyScroll'
+import { teamStore, toggleTeamMember, useStore } from '../../lib/store'
+import Link from '../Link'
 import Sprite from '../Sprite'
 import TypeBadge from '../TypeBadge'
 import StatBars from './StatBars'
@@ -29,19 +32,6 @@ const slide = {
   enter: dir => ({ x: dir * 140, opacity: 0 }),
   center: { x: 0, opacity: 1 },
   exit: dir => ({ x: dir * -140, opacity: 0 }),
-}
-
-function useLockBodyScroll() {
-  useEffect(() => {
-    const { body, documentElement } = document
-    const scrollbar = window.innerWidth - documentElement.clientWidth
-    body.style.overflow = 'hidden'
-    body.style.paddingRight = `${scrollbar}px`
-    return () => {
-      body.style.overflow = ''
-      body.style.paddingRight = ''
-    }
-  }, [])
 }
 
 function Placeholder({ lines = 1, width = '100%' }) {
@@ -72,6 +62,7 @@ export default function PokemonDetail({ pokemon, list, shared, onNavigate, onClo
   const [direction, setDirection] = useState(0)
   const [shiny, setShiny] = useState(false)
   const [prev, next] = neighbours(list, id)
+  const inTeam = useStore(teamStore).includes(id)
   const generation = GENERATIONS[gen - 1]
   const layoutId = shared && !compact ? `sprite-${id}` : undefined
 
@@ -238,6 +229,27 @@ export default function PokemonDetail({ pokemon, list, shared, onNavigate, onClo
                 {types.map(t => <TypeBadge key={t} type={t} size="md" />)}
                 {detail?.legendary && <span className="detail__tag">Legendary</span>}
                 {detail?.mythical && <span className="detail__tag">Mythical</span>}
+              </div>
+              <div className="detail__actions">
+                <button className={`btn ${inTeam ? 'btn--solid' : 'btn--ghost'}`} onClick={() => toggleTeamMember(pokemon)} aria-pressed={inTeam}>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.svg
+                      key={inTeam ? 'in' : 'out'}
+                      width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+                      initial={{ scale: 0, rotate: -90 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      exit={{ scale: 0, rotate: 90 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 24 }}
+                    >
+                      {inTeam ? <path d="m5 12 5 5 9-10" /> : <path d="M12 5v14M5 12h14" />}
+                    </motion.svg>
+                  </AnimatePresence>
+                  {inTeam ? 'In your team' : 'Add to team'}
+                </button>
+                <Link to={`/compare/${pokemon.slug}`} className="btn btn--ghost">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" /></svg>
+                  Compare
+                </Link>
               </div>
             </motion.header>
           </motion.div>

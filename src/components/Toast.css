@@ -1,0 +1,20 @@
+.toast-region {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(var(--header-h) + 12px);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+}

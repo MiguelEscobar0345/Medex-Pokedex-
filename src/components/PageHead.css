@@ -1,0 +1,33 @@
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: clamp(32px, 6vw, 64px) 0 32px;
+}
+
+.page-head__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-head__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.page-head__lede {
+  max-width: 40rem;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+}
+
+.page-head__actions {
+  display: flex;
+  gap: 8px;
+}

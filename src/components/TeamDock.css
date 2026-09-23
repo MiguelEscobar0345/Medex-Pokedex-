@@ -1,0 +1,62 @@
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + var(--bottom-bar, 0px));
+  translate: -50% 0;
+  z-index: 55;
+}
+
+.dock__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 6px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.dock__link:hover { transform: translateY(-2px); }
+
+.dock__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dock__slots { display: flex; gap: 4px; }
+
+.dock__slot {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--bg) 14%, transparent);
+}
+
+.dock__slot.is-empty {
+  background: none;
+  box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--bg) 20%, transparent);
+}
+
+.dock__sprite { width: 110%; display: block; }
+.dock__sprite .sprite__img { filter: none; }
+
+.dock__cta {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@media (max-width: 480px) {
+  .dock__label { display: none; }
+  .dock__link { padding-left: 6px; gap: 6px; }
+  .dock__slot, .dock__cta { width: 34px; height: 34px; }
+}

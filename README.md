@@ -16,6 +16,10 @@ Live → **[medex-pokedex.vercel.app](https://medex-pokedex.vercel.app/)**
   abilities, a stat radar that morphs between Pokémon, the evolution chain (with how each
   stage evolves) and type matchups. Play the cry, toggle shiny artwork, and step through
   the list with the arrow keys or by swiping. On mobile it's a swipe-to-dismiss sheet
+- **Team builder** — up to six Pokémon, saved in your browser, with defensive coverage per
+  attacking type, offensive gaps, the biggest threats and average stats
+- **Compare** two Pokémon head to head: overlaid radar, stat duel, type advantage verdict and
+  suggested rivals (`/compare/charizard-vs-blastoise`)
 - **Shareable URLs** — every Pokémon has its own page, e.g. `/pokemon/pikachu`
 - **Light and dark themes** that follow the system, with a manual toggle
 - **Accessible** — keyboard shortcuts (`/` or `Ctrl+K` to search, `Esc` to close),

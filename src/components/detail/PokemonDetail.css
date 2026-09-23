@@ -194,6 +194,13 @@
   margin-top: 8px;
 }
 
+.detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
 .detail__tag {
   height: 30px;
   display: inline-flex;

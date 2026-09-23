@@ -27,7 +27,8 @@ export function navigate(to, { replace = false } = {}) {
 const ROUTES = [
   { name: 'pokemon', pattern: /^\/pokemon\/([a-z0-9-]+)\/?$/, params: ['slug'] },
   { name: 'team', pattern: /^\/team\/?$/ },
-  { name: 'compare', pattern: /^\/compare(?:\/([a-z0-9-]+)-vs-([a-z0-9-]+))?\/?$/, params: ['a', 'b'] },
+  // /compare, /compare/pikachu or /compare/pikachu-vs-raichu
+  { name: 'compare', pattern: /^\/compare(?:\/([a-z0-9-]+?)(?:-vs-([a-z0-9-]+))?)?\/?$/, params: ['a', 'b'] },
   { name: 'game', pattern: /^\/game\/?$/ },
 ]
 
