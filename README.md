@@ -12,8 +12,10 @@ Live → **[medex-pokedex.vercel.app](https://medex-pokedex.vercel.app/)**
 - **Filters** by type and generation, plus sorting by number, name, base stat total or speed
 - **Motion throughout** — cards tilt toward the cursor, the grid reflows when filters change,
   the active filter pill slides, and the background takes on the color of the selected type
-- **Detail view** with genus, Pokédex entry, height/weight, abilities and animated base stats;
-  a centered panel on desktop and a swipe-to-dismiss sheet on mobile
+- **Detail view** — the artwork flies from its card into a panel with the Pokédex entry,
+  abilities, a stat radar that morphs between Pokémon, the evolution chain (with how each
+  stage evolves) and type matchups. Play the cry, toggle shiny artwork, and step through
+  the list with the arrow keys or by swiping. On mobile it's a swipe-to-dismiss sheet
 - **Shareable URLs** — every Pokémon has its own page, e.g. `/pokemon/pikachu`
 - **Light and dark themes** that follow the system, with a manual toggle
 - **Accessible** — keyboard shortcuts (`/` or `Ctrl+K` to search, `Esc` to close),

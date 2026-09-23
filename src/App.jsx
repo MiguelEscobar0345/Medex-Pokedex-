@@ -15,6 +15,8 @@ const DEFAULT_FILTERS = { search: '', type: 'all', gen: 0, sort: 'id' }
 export default function App() {
   const route = matchRoute(usePath())
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
+  // The card a detail view was opened from, so its sprite can fly between them
+  const [origin, setOrigin] = useState(null)
   const dexRef = useRef(null)
 
   const list = useMemo(() => filterPokedex(filters), [filters])
@@ -51,6 +53,7 @@ export default function App() {
               list={list}
               resetKey={resetKey}
               selectedId={selected?.id}
+              onOpen={setOrigin}
               onReset={() => updateFilters(DEFAULT_FILTERS)}
             />
           </div>
@@ -59,7 +62,19 @@ export default function App() {
       </div>
 
       <AnimatePresence>
-        {selected && <PokemonDetail key="detail" pokemon={selected} onClose={() => goBack('/')} />}
+        {selected && (
+          <PokemonDetail
+            key="detail"
+            pokemon={selected}
+            list={list}
+            shared={origin === selected.id}
+            onNavigate={p => {
+              setOrigin(null)
+              navigate(`/pokemon/${p.slug}`, { replace: true })
+            }}
+            onClose={() => goBack('/')}
+          />
+        )}
       </AnimatePresence>
     </>
   )

@@ -9,7 +9,7 @@ import './PokemonCard.css'
 const SPRING = { stiffness: 260, damping: 22, mass: 0.6 }
 const finePointer = typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
-export default function PokemonCard({ pokemon, hideSprite = false }) {
+export default function PokemonCard({ pokemon, hideSprite = false, onOpen }) {
   const { id, slug, name, types } = pokemon
 
   // Pointer position within the card, from -0.5 to 0.5 on each axis
@@ -40,6 +40,7 @@ export default function PokemonCard({ pokemon, hideSprite = false }) {
       style={{ '--t': typeColor(types[0]) }}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
+      onClick={() => onOpen?.(id)}
     >
       <motion.div className="card__inner" style={{ rotateX, rotateY, transformPerspective: 900 }}>
         <div className="card__bg" aria-hidden="true">
@@ -50,7 +51,7 @@ export default function PokemonCard({ pokemon, hideSprite = false }) {
         </div>
 
         <motion.div className="card__sprite" style={{ x: spriteX, y: spriteY }}>
-          {!hideSprite && <Sprite id={id} name={name} />}
+          {!hideSprite && <Sprite id={id} name={name} layoutId={`sprite-${id}`} />}
         </motion.div>
 
         <div className="card__meta">
