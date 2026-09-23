@@ -72,9 +72,10 @@ export default function Header({ search, onSearch, children }) {
   return (
     <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="page header__row">
-        <Link to="/" className="logo" aria-label="MeDex home">
+        <Link to="/" className="logo" aria-label="MeDex by miguesco, home">
           <LogoMark />
           <span className="logo__word">Me<span>Dex</span></span>
+          <span className="logo__by">by miguesco</span>
         </Link>
 
         {onSearch && (

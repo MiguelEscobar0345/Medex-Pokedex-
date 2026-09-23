@@ -46,6 +46,18 @@
 
 .logo__word span { color: var(--accent); }
 
+.logo__by {
+  align-self: flex-end;
+  margin: 0 0 4px -4px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.logo:hover .logo__by { color: var(--ink-2); }
+
 .search {
   position: relative;
   flex: 1;
@@ -105,7 +117,7 @@
 }
 
 @media (max-width: 640px) {
-  .logo__word { display: none; }
+  .logo__word, .logo__by { display: none; }
   .search kbd { display: none; }
   .header__row { gap: 10px; }
 }
