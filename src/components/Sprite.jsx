@@ -32,7 +32,7 @@ export default function Sprite({ id, name, shiny = false, className = '', layout
         onError={markLoaded}
         initial={false}
         animate={{ opacity: loaded ? 1 : 0, scale: loaded ? 1 : 0.88, y: loaded ? 0 : 8 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], layout: { type: 'spring', stiffness: 160, damping: 22 } }}
       />
     </div>
   )

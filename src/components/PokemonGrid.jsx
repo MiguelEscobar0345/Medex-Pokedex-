@@ -7,7 +7,7 @@ import './PokemonGrid.css'
 const PAGE = 36
 const EASE = [0.22, 1, 0.36, 1]
 
-export default function PokemonGrid({ list, resetKey, selectedId, onReset }) {
+export default function PokemonGrid({ list, resetKey, selectedId, onOpen, onReset }) {
   const [limit, setLimit] = useState(PAGE)
   const [prevKey, setPrevKey] = useState(resetKey)
   const sentinelRef = useRef(null)
@@ -58,7 +58,7 @@ export default function PokemonGrid({ list, resetKey, selectedId, onReset }) {
               exit={{ opacity: 0, scale: 0.92, transition: { duration: 0.2 } }}
               transition={{ layout: { type: 'spring', stiffness: 320, damping: 34 } }}
             >
-              <PokemonCard pokemon={p} hideSprite={p.id === selectedId} />
+              <PokemonCard pokemon={p} hideSprite={p.id === selectedId} onOpen={onOpen} />
             </motion.div>
           ))}
         </AnimatePresence>

@@ -1,0 +1,41 @@
+.radar {
+  width: 100%;
+  max-width: 280px;
+  overflow: visible;
+}
+
+.radar__ring {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.radar__ring--outer { fill: color-mix(in oklab, var(--ink) 3%, transparent); }
+
+.radar__axis {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.radar__shape {
+  fill: color-mix(in oklab, var(--c) 28%, transparent);
+  stroke: var(--c);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.radar__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.radar__value {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--ink);
+  letter-spacing: 0;
+}
