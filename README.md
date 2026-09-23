@@ -1,153 +1,76 @@
-# Medex (Pokédex API)
+# MeDex
 
-A modern, production-grade Pokédex web application built with React and Vite. Designed with: frosted glass surfaces, fluid animations, and a refined typographic system.
+A field guide to all 1,025 Pokémon, built with React, Vite and [Motion](https://motion.dev).
 
-Live demo → (https://medex-pokedex.vercel.app/)!
-
----
-
-## Preview
-
-> Clean cards, smooth spring animations, and a full-detail bottom sheet modal — all powered by the free [PokéAPI](https://pokeapi.co).
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | React 19 |
-| Build tool | Vite 5 |
-| Styling | CSS-in-JS (inline styles + CSS variables) |
-| Data | [PokéAPI](https://pokeapi.co) — public REST API |
-| Fonts | Playfair Display · Inter (Google Fonts) |
-| Deployment | Vercel |
+Live → **[medex-pokedex.vercel.app](https://medex-pokedex.vercel.app/)**
 
 ---
 
 ## Features
 
-- **898 Pokémon** loaded from the official PokéAPI
-- **Real-time search** — filter by name instantly
-- **Type filtering** — 18 type pills in the sticky header
-- **Paginated grid** — loads 40 at a time for performance
-- **Detail modal** — height, weight, base stats with animated bars, flavor text, and abilities
-- **Response caching** — API calls cached in memory; no duplicate requests
-- **Accessible** — keyboard navigable cards and modal, ARIA roles, focus management
-- **Responsive** — works on mobile, tablet, and desktop
+- **All 1,025 species** (Gen I–IX) with instant search by name or number
+- **Filters** by type and generation, plus sorting by number, name, base stat total or speed
+- **Motion throughout** — cards tilt toward the cursor, the grid reflows when filters change,
+  the active filter pill slides, and the background takes on the color of the selected type
+- **Detail view** with genus, Pokédex entry, height/weight, abilities and animated base stats;
+  a centered panel on desktop and a swipe-to-dismiss sheet on mobile
+- **Shareable URLs** — every Pokémon has its own page, e.g. `/pokemon/pikachu`
+- **Light and dark themes** that follow the system, with a manual toggle
+- **Accessible** — keyboard shortcuts (`/` or `Ctrl+K` to search, `Esc` to close),
+  focus management, and animations reduced when the OS asks for it
 
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm 9+
-
-### Installation
+## Getting started
 
 ```bash
-# Clone the repo
-git clone https://github.com/MiguelEscobar0345/MeDex.git
-cd pokedex
-
-# Install dependencies
+git clone https://github.com/MiguelEscobar0345/Medex-Pokedex-.git
+cd Medex-Pokedex-
 npm install
-
-# Start dev server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173).
 
-### Build for production
+| Script | What it does |
+|--------|--------------|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build into `dist/` |
+| `npm run lint` | Run ESLint |
+| `npm run data` | Regenerate `src/data/pokedex.json` from PokéAPI |
 
-```bash
-npm run build
-npm run preview
+## How it works
+
+**Static index, live details.** `scripts/build-pokedex.mjs` pulls every species' name,
+generation, types and base stats from the PokéAPI GraphQL endpoint into a ~22 KB (gzipped)
+JSON file. The grid, filters and sorting run entirely on that file, so there is no request
+per card. Entry text, abilities and measurements are fetched from the REST API when a
+detail view opens, and cached in memory.
+
+**Artwork** comes straight from the PokéAPI sprites repository.
+
+**Routing** is a ~50 line History API router (`src/lib/router.js`); `vercel.json` rewrites
+unknown paths to `index.html` so deep links work.
+
+## Project structure
+
+```
+src/
+├── components/
+│   ├── detail/            # Detail panel and its sections
+│   ├── AmbientBackground  # Type-tinted drifting light
+│   ├── Filters            # Type / generation pills and sorting
+│   ├── Hero               # Title reveal, counter and featured Pokémon
+│   ├── PokemonCard        # Card with pointer tilt and parallax
+│   ├── PokemonGrid        # Animated grid with infinite scroll
+│   └── …
+├── data/                  # pokedex.json, type chart and helpers
+├── hooks/
+├── lib/                   # API client and router
+└── styles/                # Design tokens and base styles
 ```
 
----
+## Credits
 
-## Project Structure
+Data and artwork from [PokéAPI](https://pokeapi.co). Pokémon and Pokémon names are
+trademarks of Nintendo, Game Freak and The Pokémon Company.
 
-```
-pokedex/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx          # Sticky nav with search + type filters
-│   │   ├── PokemonCard.jsx     # Individual Pokémon card
-│   │   ├── PokemonModal.jsx    # Detail bottom sheet
-│   │   ├── TypeBadge.jsx       # Reusable type pill
-│   │   └── Loader.jsx          # Animated loading dots
-│   ├── hooks/
-│   │   ├── usePokemonList.js   # Fetch + filter + paginate list
-│   │   └── usePokemonDetail.js # Fetch single Pokémon detail
-│   ├── utils/
-│   │   └── typeColors.js       # Type → color mapping
-│   ├── styles/
-│   │   └── globals.css         # CSS variables + keyframes
-│   ├── App.jsx
-│   └── main.jsx
-├── index.html
-├── vite.config.js
-├── vercel.json
-└── package.json
-```
-
----
-
-## Deploy on Vercel
-
-### Option 1 — Vercel CLI
-
-```bash
-npm i -g vercel
-vercel
-```
-
-### Option 2 — GitHub Import
-
-1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → **New Project** → Import your repo
-3. Set **Framework Preset** to `Vite`
-4. **Build Command:** `npm run build`
-5. **Output Directory:** `dist`
-6. Click **Deploy**
-
-The `vercel.json` handles client-side routing automatically.
-
----
-
-## Design Decisions
-
-**Why inline styles over a CSS framework?**  
-Full control over every property without specificity conflicts or unused CSS. The component stays self-contained — ideal for a portfolio piece where code clarity matters.
-
-**Why no state management library?**  
-The app's state is simple enough to handle with `useState` and `useCallback`. Adding Redux or Zustand would be over-engineering for this scope.
-
-**Why cache API responses in module-level objects?**  
-PokéAPI is rate-limited. Caching prevents redundant requests on filter/search changes within the same session, without needing localStorage or a service worker.
-
----
-
-## API Reference
-
-All data comes from the free, open [PokéAPI](https://pokeapi.co). No API key required.
-
-| Endpoint | Usage |
-|----------|-------|
-| `GET /pokemon?limit=898` | Full Pokémon name list |
-| `GET /type/{type}` | Pokémon filtered by type |
-| `GET /pokemon/{id or name}` | Full detail for one Pokémon |
-| `GET /pokemon-species/{id}` | Flavor text + genus |
-
----
-
-## License
-
-MIT © [Miguel E. Escobar P.](https://github.com/MiguelEscobar0345/MiguelPortfolio)
+MIT © [Miguel E. Escobar P.](https://github.com/MiguelEscobar0345)

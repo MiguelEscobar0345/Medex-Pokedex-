@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "data": "node scripts/build-pokedex.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
+    "motion": "^13.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
