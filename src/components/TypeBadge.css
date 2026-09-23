@@ -1,0 +1,19 @@
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.type-badge--sm { height: 24px; padding: 0 10px 0 8px; font-size: 0.72rem; }
+.type-badge--md { height: 30px; padding: 0 13px 0 10px; font-size: 0.8rem; }
+
+.type-badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--t);
+}

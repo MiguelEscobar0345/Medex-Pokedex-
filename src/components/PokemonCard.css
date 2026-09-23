@@ -1,0 +1,107 @@
+.card {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-lg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card__inner {
+  position: relative;
+  height: 100%;
+  padding: 14px 16px 16px;
+  border-radius: inherit;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line), var(--shadow-sm);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.35s ease, translate 0.45s var(--ease-spring);
+}
+
+.card:hover .card__inner {
+  translate: 0 -4px;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--t) 30%, var(--line)), var(--shadow-md);
+}
+
+.card:active .card__inner { translate: 0 -1px; }
+
+/* Clipped decoration; the sprite sits outside it so it can pop past the edge */
+.card__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.card__number {
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  font-family: var(--font-display);
+  font-size: 4.6rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--t) 35%, var(--line-strong));
+  opacity: 0.8;
+}
+
+.card__disc {
+  position: absolute;
+  left: 50%;
+  top: 26px;
+  width: 64%;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  transition: scale 0.6s var(--ease-spring), background-color 0.3s ease;
+}
+
+.card:hover .card__disc { scale: 1.14; }
+
+.card__sprite {
+  position: relative;
+  width: 72%;
+  margin: 12px auto 6px;
+  transform: translateZ(40px);
+}
+
+.card__sprite .sprite {
+  transition: scale 0.5s var(--ease-spring), translate 0.5s var(--ease-spring);
+}
+
+.card:hover .card__sprite .sprite {
+  scale: 1.1;
+  translate: 0 -8px;
+}
+
+.card__meta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card__id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+
+.card__name {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}

@@ -1,0 +1,111 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--header-bg);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.is-scrolled {
+  border-bottom-color: var(--line);
+}
+
+.header__row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.logo:hover .logo-mark {
+  transform: rotate(180deg);
+}
+
+.logo__word {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.logo__word span { color: var(--accent); }
+
+.search {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px 0 14px;
+  gap: 10px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--ink) 6%, transparent);
+  color: var(--ink-3);
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, max-width 0.4s var(--ease-out);
+}
+
+.search:focus-within {
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line-strong), 0 0 0 4px color-mix(in oklab, var(--accent) 18%, transparent);
+  max-width: 520px;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.search input::placeholder { color: var(--ink-3); }
+.search input::-webkit-search-cancel-button { display: none; }
+
+.search kbd {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  min-width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: var(--ink-3);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  transition: opacity 0.2s ease;
+}
+
+.search:focus-within kbd { opacity: 0; }
+
+.header__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .logo__word { display: none; }
+  .search kbd { display: none; }
+  .header__row { gap: 10px; }
+}

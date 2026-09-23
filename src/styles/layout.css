@@ -1,0 +1,12 @@
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main { flex: 1; }
+
+/* Scroll target for "Browse" and filter changes: land with the filters right under the header */
+.dex-anchor { scroll-margin-top: -16px; }
+
+.results { padding-top: 20px; }

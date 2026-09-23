@@ -1,0 +1,93 @@
+/* Design tokens. Light is the default; dark follows the system unless the
+   user picked a theme (html[data-theme]). */
+:root {
+  --bg: #f4f1e8;
+  --bg-elev: #f9f7f1;
+  --surface: #fffdf8;
+  --surface-2: #efebdf;
+  --ink: #18211c;
+  --ink-2: #56615a;
+  --ink-3: #8c948c;
+  --line: rgba(24, 33, 28, 0.09);
+  --line-strong: rgba(24, 33, 28, 0.18);
+  --accent: #395144;
+  --accent-ink: #fffdf8;
+  --gold: #aa8b56;
+  --scrim: rgba(18, 24, 20, 0.42);
+  --header-bg: rgba(244, 241, 232, 0.78);
+
+  --shadow-sm: 0 1px 2px rgba(24, 33, 28, 0.06), 0 2px 8px rgba(24, 33, 28, 0.04);
+  --shadow-md: 0 2px 6px rgba(24, 33, 28, 0.06), 0 12px 32px rgba(24, 33, 28, 0.08);
+  --shadow-lg: 0 8px 24px rgba(24, 33, 28, 0.1), 0 32px 80px rgba(24, 33, 28, 0.16);
+
+  /* How strongly type colors tint surfaces, and how type text is derived */
+  --tint: 16%;
+  --type-ink-mix: #000;
+  --type-ink-amt: 68%;
+
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --header-h: 64px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0e1310;
+    --bg-elev: #131a16;
+    --surface: #17201b;
+    --surface-2: #1e2923;
+    --ink: #edeee6;
+    --ink-2: #a9b0a6;
+    --ink-3: #6f786f;
+    --line: rgba(237, 238, 230, 0.08);
+    --line-strong: rgba(237, 238, 230, 0.16);
+    --accent: #9cc3a6;
+    --accent-ink: #0e1310;
+    --gold: #d2b27a;
+    --scrim: rgba(4, 6, 5, 0.6);
+    --header-bg: rgba(14, 19, 16, 0.74);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4), 0 32px 80px rgba(0, 0, 0, 0.5);
+    --tint: 22%;
+    --type-ink-mix: #fff;
+    --type-ink-amt: 58%;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0e1310;
+  --bg-elev: #131a16;
+  --surface: #17201b;
+  --surface-2: #1e2923;
+  --ink: #edeee6;
+  --ink-2: #a9b0a6;
+  --ink-3: #6f786f;
+  --line: rgba(237, 238, 230, 0.08);
+  --line-strong: rgba(237, 238, 230, 0.16);
+  --accent: #9cc3a6;
+  --accent-ink: #0e1310;
+  --gold: #d2b27a;
+  --scrim: rgba(4, 6, 5, 0.6);
+  --header-bg: rgba(14, 19, 16, 0.74);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4), 0 32px 80px rgba(0, 0, 0, 0.5);
+  --tint: 22%;
+  --type-ink-mix: #fff;
+  --type-ink-amt: 58%;
+  color-scheme: dark;
+}

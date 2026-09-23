@@ -1,0 +1,44 @@
+@property --ambient {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #395144;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  transition: --ambient 1.2s ease;
+}
+
+.ambient__blob {
+  position: absolute;
+  width: 70vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--ambient) 20%, transparent) 0%, transparent 62%);
+  will-change: transform;
+}
+
+.ambient__blob--a {
+  top: -38vmax;
+  left: -22vmax;
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+
+.ambient__blob--b {
+  top: 30vh;
+  right: -34vmax;
+  opacity: 0.8;
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  to { transform: translate(18vw, 12vh) scale(1.15); }
+}
+
+@keyframes drift-b {
+  to { transform: translate(-14vw, -10vh) scale(0.9); }
+}
